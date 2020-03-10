@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+%\usepackage[latin1]{inputenc}  
+\usepackage{xcolor}
+
+% ADD SUBSUBSUBSECTION
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+     
+\sloppy
+
+\title{Árion: A Blockchain Framework for Traceability in\\ Supply Chain Management}
+
+\author{Edivaldo M. F. J. Júnior\inst{1}, Manoel C. M. Neto\inst{1}, Allan E. S. Freitas\inst{1}}
+
+
+\address{Departamento de Pós-Graduação e Qualificação -- Instituto Federal de Educação,\\ Ciência e Tecnologia da Bahia (IFBA)\\ -- Salvador -- BA -- Brazil
+  \email{\{edivaldojunior,manoelnetom,allan\}@ifba.edu.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\input{abstract}
+
+\input{sections/1_INTRODUCTION.tex}
+\input{sections/2_THEORETICAL_BACKGROUND.tex}  %<< PAREI AQUI
+\input{sections/3_GENERAL_CONTEXT.tex}
+\input{sections/4_TECHNICAL_SPECIFICATION.tex}
+\input{sections/5_CONCLUSION.tex}
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
