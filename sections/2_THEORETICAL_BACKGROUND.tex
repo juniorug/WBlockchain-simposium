@@ -104,83 +104,17 @@ From a technical standpoint, the most fundamental definition of a transaction is
 \end{enumerate}
 
 \subsubsubsection{blocks}\label{sec:blocks}
-Blocks contains a header with information needed for current maintenance and its validation. A block consists of the block header and block body as shown in Figure \ref{fig:block}. 
-{\color{red} RETIRAR ESSA IMAGEM SE FOR PRECISO}
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[scale=0.5]{images/blockStructure.png}
-\caption{Structure of a block. \cite{zheng2016blockchain}}
-\label{fig:block}
-\end{center}
-\end{figure}
+Blocks contains a header with information needed for current maintenance and its validation. A block consists of the block header and block body. The body's block consists of a transaction counter and transaction. The maximum number of transactions a block can hold depends on block size and the size of each transaction \cite{zheng2016blockchain}.
 
-The body's block consists of a transaction counter and transaction. The maximum number of transactions a block can hold depends on block size and the size of each transaction \cite{zheng2016blockchain}.
-
-The validation of a block consists in verifying (i) if its structure is well formed (ii) its hash is valid (meets the challenge), (iii) its size is within the network accepted limit, (iv) the set of transactions within the block is valid, (v) the first transaction (and only the first) is the coinbase transaction - which incorporates the generation of new cryptocurrencies in the system, besides acting as a reward mechanism. The blocks are validated independently, by each node of the blockchain network, and this feature contributes to the process decentralization \cite{greve2018blockchain}.
+Validate a block consists in verifying (i) if its structure is well formed (ii) its hash is valid (meets the challenge), (iii) its size is within the network accepted limit, (iv) the set of transactions within the block is valid, (v) the first transaction (and only the first) is the coinbase transaction - which incorporates the generation of new cryptocurrencies in the system, besides acting as a reward mechanism. The blocks are validated independently, by each node of the blockchain network, and this feature contributes to the process decentralization \cite{greve2018blockchain}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Smart Contracts}\label{sec:smartContracts}
 
 Blockchain 2.0 begins with the innovative proposal of smart contracts in 2013, and all range of possible financial applications \cite{greve2018blockchain}. A smart contract is a computerized transaction protocol that executes the terms of a contract \cite{szabo1997idea}. Its model was proposed a long time ago and now this concept can be implemented with blockchain.
 
-The term smart contract (SC) has been standardized by Nick Szabo in the 90s \cite{greve2018blockchain}. It means: “an internal transaction protocol format that executes the terms of a contract. Their overall goals are ensure common contractual conditions (such as payment terms, liens, confidentiality and even compliance), minimize malicious and accidental exceptions and the need for reliable intermediaries. Related economic objectives include reducing fraud losses, arbitration and execution costs, and other transaction costs.” \cite{szabo1997idea}.
+The term smart contract (SC) means: “an internal transaction protocol format that executes the terms of a contract. Their overall goals are ensure common contractual conditions, minimize malicious and accidental exceptions and the need for reliable intermediaries. Related economic objectives include reducing fraud losses, arbitration and execution costs, and other transaction costs.” \cite{szabo1997idea}.
 
-Smart contract searches can be classified into two types: development and evaluation. Development can be development of smart contract or smart contract platform development. Recently, many smart contracts have been implemented on the Ethereum blockchain \cite{wood2018secure}. Regarding the platform development, many smart contracting platforms like Ethereum \cite{wood2018secure} and Hawk \cite{kosbaa2016theblockchain} are emerging \cite{zheng2016blockchain}. Evaluation means code analysis and performance evaluation. Errors in smart contracting can bring disastrous damage. Smart contract attack analysis is very important. On the other hand, smart contract performance is also vital to the contract. With the rapid development of blockchain technology, more and more smart contract based applications will be placed in use and companies need to consider performance of application \cite{zheng2016blockchain}.
-
-In the blockchain, smart contracts are created as scripts, stored in with exclusive addressing on the blockchain itself \cite{greve2018blockchain}. They are triggered when addressing a transaction to it. Then the script is executed independently and automatically, as prescribed in all nodes in the network according to the data included in the transaction \cite{christidis2016blockchains}.
-
-\subsubsubsection{Smart Contracts Security}\label{sec:seguranca}
-Smart contracts interpret the code objectively - "The Code is the law". However, a code error was the target of cyber attack, resulting in a deviation of about \$50 million dollars, forcing Ethereum to perform a hard fork to perform a recovery \cite{bashir2018mastering}. Performing recoveries like this is not trivial, so the risks must be evaluated and minimized.
-
-Smart contracts should be concerned with blockchain threats:
-\begin{itemize}
-\item State of contract.
-\item Random generation.
-\item Time Restrictions.
-\end{itemize}
-
-Regarding the status of the contract, field and balance values determines the smart contract state. A user when invoking it may not have certainty under its state, as other transactions may modify it or a fork may have occurred. In some cases, this can create vulnerabilities and lead to asset theft. In random generation, some contracts generate pseudo-random numbers with the same seed for all miners. This allows everyone to have the same view as Blockchain, providing
-a malicious miner to influence the network. About time restriction, if a miner holds a stake in a contract, he can gain an advantage by choosing an appropriate time stamp for the block he is exploring \cite{greve2018blockchain}.
+In the blockchain, smart contracts are created as scripts, stored in with exclusive addressing on the blockchain itself \cite{greve2018blockchain}. They are triggered when addressing a transaction to it. Then the script is executed independently and automatically, as prescribed in all nodes in the network according to the data included in the transaction \cite{christidis2016blockchains}. Smart contracts interpret the code objectively - "The Code is the law".
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Traceability}\label{sec:traceability}
-
-There are billions of products being manufactured every day through complex supply chains that can extend to all parts of the world. However, there is very little information on how, when and where these products originated, manufactured and used during their life cycle \cite{horiuchirastreabilidade}.
-
-Before reaching the end consumer, the goods go through an often wide network of retailers, distributors, carriers, warehousing facilities and suppliers who participate in the design, production, delivery and sales process of a product, but in many cases. These steps are a dimension invisible to the consumer \cite{provenance2015}.
-
-In \cite{gryna1998juran, Opara2001} Traceability is defined as the ability to preserve the identity of the products and their origins, so that the collection, documentation and maintenance of information related to all processes in the production chain must be ensured. For a food product, traceability represents the ability to identify where and how it was grown, as well as the ability to track its post-harvest history and to identify the processes performed at each step in the production chain through records. Traceability is required primarily for \cite{horiuchirastreabilidade}:
-\begin{itemize}
-\item Improve credibility with customers and consumers.
-\item Ensure that only quality materials and components are present in the final product.
-\item Better allocate responsibilities.
-\item Identify products that are distinct but may be confused.
-\item Enable the return of defective or suspect products.
-\item Find the causes of failures and take steps to repair them at the lowest possible cost.
-\end{itemize}
-
-In \cite{opara2003traceability} six important elements are to be considered for traceability:
-
-\begin{itemize}
-\item Product Traceability: Determines the location of a product at any stage of the production chain. to facilitate logistics, inventory management, product recall, and information disclosure to consumers and customers.
-\item Process Traceability: Identifies the type and sequence of activities that affected a particular product. This includes any interactions between the product and physical / mechanical, chemical and environmental factors that result in the transformation of raw material into value added products.
-\item Genetic Traceability: determines the genetic constitution of the product.
-\item Input Traceability: Determines the type and source of input such as fertilizers and livestock.
-\item Traceability of Diseases and Pests: Tracks the epidemiology of pests such as bacteria and viruses.
-\item Measurement Traceability: determines the measurement instruments, in addition to specifying the environmental, geospatial and temporal factors that influence data quality.
-\end{itemize}
-
-A traceability system allows any user to track products by providing information about them (eg originality, components, or locations) during production and distribution. Suppliers and retailers typically require independent, government-certified traceability service providers to inspect products throughout the supply chain. Vendors and retailers request traceability services for different purposes.Suppliers want to receive certificates to showcase their products. Retailers want to verify the origin and quality of products \cite{lu2017adaptable}.
-
-Supply chain visibility, or traceability, is one of the key challenges encountered in the business world, with most companies having little or no information about their own second- and third-tier suppliers. Transparency and end-to-end visibility of the supply chain can help shape product, raw material, test control, and end product flow, enabling better operations and risk analysis to ensure better chain productivity \cite{abeyratne2016blockchain}.
-
-Folinas et al. \cite{folinas2006traceability} identified that the efficiency of a traceability system depends on the ability to track and trace each individual asset and logistics units, in a way that enables continuous monitoring from firstly processed until final clearance by the consumer.
-
-Aung and Chang \cite{aung2014traceability} and Golan \cite{golan2004traceability} set three main traceability objectives, namely: (1) better supply chain management, (2) product differentiation and quality assurance, and (3) better identification of non-compliant products. An additional objective is to maintain assurance of traceability in accordance with applicable regulations and standards. A complete traceability system will include components that manage \cite{vargas2017trazabilidad}:
-
-\begin{enumerate}
-\item Identification, marking and assignment of traceable objects, parties and locations.
-\item Automatic capture (by scanning or reading) of movements or events involving an object.
-\item Record and share traceability data, internally or with parts of a supply chain, so that visibility of what has occurred can be achieved.
-\end{enumerate}
