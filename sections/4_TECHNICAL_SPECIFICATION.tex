@@ -1,20 +1,17 @@
 \section{Technical Specification} \label{sec:Technical}
 
-Generally all SCM platform has three main items: Assets (the product or goods itself), steps (phases which products go through) and actors (people who interact with the products during the steps). The platform is based on this triad and it must be well defined on a new supply chain's creation. Initially, a configuration file in json format is generated and read in the blockchain platform, adding the main information for the correct functioning of the chain. The mechanism for creating this configuration file is detailed in the sections \Cref{sec:UserInteraction,sec:ServiceLayer} {\color{red} VERIFICAR AQUI SE A SUBSEÇÃO ESTÁ CORRETA}.
+Generally all SCM platform has three main items: Assets (the product or goods itself), steps (phases which products go through) and actors (people who interact with the products during the steps). The platform is based on this triad and it must be well defined on a new supply chain's creation. Initially, a configuration file in json format is generated and read in the blockchain platform, adding the main information for the correct functioning of the chain. The mechanism for creating this configuration file is detailed in the sections \Cref{sec:UserInteraction,sec:ServiceLayer}.
 
 The general objective of this work is to create a generic framework intended to be used in any kind of supply chain correlated to assets and products. Árion project is divided into three main modules described below: WebApp - FrondEnd, WebApp - BackEnd and Data Storage. Figure~\ref{fig:detalhamentotecnico} shows the application architecture and its components.
 
 %htbp
 \begin{figure}[ht]
 \begin{center}
-  \includegraphics[scale=0.45]{images/detalhamentotecnico.png}
+  \includegraphics[scale=0.4]{images/detalhamentotecnico.png}
 \caption{Árion Application architecture}
 \label{fig:detalhamentotecnico}
 \end{center}
 \end{figure}
-
-\subsubsubsection{Chaincode}
-{\color{red} ??? adicionar aqui as informações do codigo golang criado}
 
 \subsection{WebApp - FrondEnd}\label{sec:WebAppFrondEnd}
 WebApp - FrontEnd is a client–server application which the client (including the user interface and client-side logic) runs in a web browser. This is a single-page application (SPA) that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server. This approach avoids interruption of the user experience between successive pages, making the application behave more like a desktop application.
@@ -89,41 +86,30 @@ Data storage is a general term for archiving data in electromagnetic or other fo
 
 Árion uses three applications as data storages: Blockchain, Cloud filesystem and relational database better detailed on next subsections. Blockchains grow continuously because of the amount of data and code in them, which is unchanging. Therefore, an important design decision is to choose which data and calculations to keep in and out of the chain.
 
-\subsubsection{Blockchain}\label{sec:DataStorageBlockchain}
-The platform uses Blockchain as a supply chain that track parts and service provenance, ensure authenticity of goods, block counterfeits and reduce conflicts.
+\subsubsection{Filesystem}\label{sec:Filesystem}
+A cloud file system is a tiered storage system that provides shared access to file data. Users can create, delete, modify, read and write files. All these actions generates a digital fingerprint (hash) information that is stored in the blockchain, separately from the original files or content, to keep consistency, traceability and auditability to the files.
 
-To achieve that, Hyperledger Fabric is used. Hyperledger is an open source collaborative effort created to advance cross-industry blockchain technologies. It is a global collaboration, hosted by The Linux Foundation, including leaders in finance, banking, Internet of Things, supply chains, manufacturing and Technology.
+A Cloud file sharing service gives multiple users simultaneous access to a cloud file data set. Cloud file sharing security is managed with user and group permissions, allowing administrators to tightly control access to shared file data.
+
+\subsubsection{Database}\label{sec:Database}
+A relational database is a set of formally described tables from which data can be accessed or reassembled in many different ways without having to reorganize the database tables. The standard user and application programming interface (API) of a relational database is the Structured Query Language (SQL). SQL statements are used both for interactive queries for information from a relational database and for gathering data for reports.
+
+\subsubsection{Blockchain}\label{sec:DataStorageBlockchain}
+The platform uses Blockchain as a supply chain that track parts and service provenance, ensure authenticity of goods, block counterfeits and reduce conflicts. To achieve that, Hyperledger Fabric is used. Hyperledger is an open source collaborative effort created to advance cross-industry blockchain technologies. It is a global collaboration, hosted by The Linux Foundation, including leaders in finance, banking, Internet of Things, supply chains, manufacturing and Technology.
 Hyperledger Fabric is an enterprise-grade permissioned distributed ledger framework for developing solutions and applications. Its modular and versatile design satisfies a broad range of industry use cases. It offers a unique approach to consensus that enables performance at scale while preserving privacy.
 
 In context of Árion, the Blockchain module consists in a smart contract, chaincode and the ledger. From the application developer’s perspective, a smart contract, together with the ledger, form the heart of a Hyperledger Fabric blockchain system. Whereas a ledger holds facts about the current and historical state of a set of business objects, a smart contract defines the executable logic that generates new facts that are added to the ledger. A chaincode is typically used by administrators to group related smart contracts for deployment, but can also be used for low level system programming of Fabric.
 
-\subsubsubsection{Smart contract}
-Before businesses can transact with each other, they must define a common set of contracts covering common terms, data, rules, concept definitions, and processes. Taken together, these contracts lay out the business model that govern all of the interactions between transacting parties.
-
-A smart contract defines the rules between different organizations in executable code. Applications invoke a smart contract to generate transactions that are recorded on the ledger.
-
 \subsubsubsection{Chaincode}
 Hyperledger Fabric users often use the terms smart contract and chaincode interchangeably. In general, a smart contract defines the transaction logic that controls the lifecycle of a business object contained in the world state. It is then packaged into a chaincode which is then deployed to a blockchain network. Think of smart contracts as governing transactions, whereas chaincode governs how smart contracts are packaged for deployment.
 
-\subsubsubsection{Ledger}
-At the simplest level, a blockchain immutably records transactions which update states in a ledger. A smart contract programmatically accesses two distinct pieces of the ledger – a blockchain, which immutably records the history of all transactions, and a world state that holds a cache of the current value of these states, as it’s the current value of an object that is usually required.
+Before businesses transact with each other, they must define a common set of contracts covering common terms, data, rules, concept definitions, and processes. Taken together, these contracts lay out the business model that govern all of the interactions between transacting parties. A smart contract defines the rules between different organizations in executable code. Applications invoke a smart contract to generate transactions that are recorded on the ledger.
 
-Smart contracts primarily put, get and delete states in the world state, and can also query the immutable blockchain record of transactions.
+Smart contracts have many APIs available to them. Critically, in all cases, whether transactions create, read, update or delete business objects in the world state, the blockchain contains an immutable record of these changes.
 
+{\color{red} ??? usar essa lista ao falar das queries do smart contract}
 \begin{itemize}
 \item A \textbf{get} typically represents a query to retrieve information about the current state of a business object.
 \item A \textbf{put} typically creates a new business object or modifies an existing one in the ledger world state.
 \item A \textbf{delete} typically represents the removal of a business object from the current state of the ledger, but not its history.
 \end{itemize}
-
-Smart contracts have many APIs available to them. Critically, in all cases, whether transactions create, read, update or delete business objects in the world state, the blockchain contains an immutable record of these changes.
-
-\subsubsection{Filesystem}\label{sec:Filesystem}
-A cloud file system is a tiered storage system that provides shared access to file data. Users can create, delete, modify, read and write files, as well as logically organize them into directory trees for intuitive access.
-
-Cloud file sharing can be defined as a service that gives multiple users simultaneous access to a cloud file data set. Cloud file sharing security is managed with user and group permissions, allowing administrators to tightly control access to shared file data.
-
-For all file uploaded and stored in the filesystem, a locally stored digital fingerprint (hash) is saved in the blockchain, separately from the original files or content, to make it easier to confirm whether data has been altered or manipulated in a particular organization.
-
-\subsubsection{Database}\label{sec:Database}
-A relational database is a set of formally described tables from which data can be accessed or reassembled in many different ways without having to reorganize the database tables. The standard user and application programming interface (API) of a relational database is the Structured Query Language (SQL). SQL statements are used both for interactive queries for information from a relational database and for gathering data for reports.
