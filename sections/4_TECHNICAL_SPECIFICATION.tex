@@ -107,9 +107,22 @@ Before businesses transact with each other, they must define a common set of con
 
 Smart contracts have many APIs available to them. Critically, in all cases, whether transactions create, read, update or delete business objects in the world state, the blockchain contains an immutable record of these changes.
 
-{\color{red} ??? usar essa lista ao falar das queries do smart contract}
+The key feature of this project is how the chaincode is structured and how it works to achieve the goal of being able to be used in most of supply chains. The chaincode is written in Golang and declares a contract handling the reading and writing of strings to and from the world state. All contracts for use in chaincode must implement the contractapi.ContractInterface. 
+
+A configuration file including the \textit{assetId}, a list of actors and a list of ordered steps is created from the application configuration module and read by the chaincode at the \textit{initLedger} and also from the \textit{createNewAsset} functions to configure the asset structure correctly and guarantee the steps sequence and the Actor rules.
+
+When creating an asset item an \textit{AssetItemId} is generated and this field is the order-tracking ID for the entire supply chain. Besides, each entity in the chain will have its unique entity ID and timestamp when it starts processing the transaction. By querying \textit{AssetItemId}, the user can easily track the current transaction information and status. In the final step, the blockchain will update \textit{deliverDate} and mark the status as completed once the last actor (generally the consumer) has received the order.
+
+There are create methods for each struct (Actor, Asset, Step, AssetItem) which are responsible for create an instance of these \textit{structs} and save the state into the blockchain. The query methods are responsible for interact with the information of any item in the blockchain. Basically there are three main actions to interact with the blockchain: 
+
 \begin{itemize}
 \item A \textbf{get} typically represents a query to retrieve information about the current state of a business object.
 \item A \textbf{put} typically creates a new business object or modifies an existing one in the ledger world state.
 \item A \textbf{delete} typically represents the removal of a business object from the current state of the ledger, but not its history.
 \end{itemize}
+
+\textit{ChangeAssetItemOwner} is the method called to update an asset item when it is moved from a step to another. It updates the \textit{CurrentOwnerId}, the \textit{ProcessDate}, information about prices and many other details of the transactions by the key/value map \textit{AditionalInfoMap}.
+
+The \textit{main} function is the star point of the chaincode. It invokes the \textit{initLedger} function, reads the configuration files and raises the platform enabling users to interact with the blockchain via exposing its API's.
+
+The ledger is composed by two parts: the world state and the blockchain. The world state is a database that stores (as a key value pair) the current values of all ledger states (all Chaincode states). It is populated when each peer validates and commits a transaction. The blockchain represents a transaction log that records all historical changes of the world state, and is a file-based ledger which stores an immutable sequence of blocks, and contains a set of ordered transaction data.
