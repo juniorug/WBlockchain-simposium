@@ -10,11 +10,9 @@ This section presents the main concepts, which provide subsidies for the propose
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Blockchain}\label{sec:blockchain}
-Recently, cryptocurrency has attracted extensive attention from both industry and the academy. Bitcoin, which is often called the first cryptocurrency, had a huge success with the capital market coming to \$ 10 billion in 2016 \cite{coindesk}. Blockchain is the central mechanism of the Bitcoin and was first proposed in 2008 and implemented in 2009 \cite{nakamoto2008bitcoin}. The blockchain can be considered as a public ledger, in which All committed transactions are stored in a block chain. This chain grows continuously when new blocks are attached to it \cite{zheng2016blockchain}.
+Recently, cryptocurrency has attracted extensive attention from both industry and the academy. Bitcoin, which is often called the first cryptocurrency, had a huge success with the capital market coming to \$ 10 billion in 2016 \cite{coindesk}. Blockchain is the central mechanism of the Bitcoin and was first proposed in 2008 and implemented in 2009 \cite{nakamoto2008bitcoin}. The blockchain can be considered as a public ledger, in which All committed transactions are stored in a block chain \cite{zheng2016blockchain}.
 
 While the system of financial institutions that serve as third parties reliable processors for processing payments work well for most still suffers from the shortcomings inherent in the model based on confidence. In addition, the cost of mediation increases transaction costs, which limits the practical minimum size of the transaction and eliminates the possibility of small occasional transactions. To solve these problems, \cite{nakamoto2008bitcoin} defined an electronic payment system called Bitcoin, based on cryptographic proof rather than reliable, allowing either party willing to transact directly with each other without the need to a reliable third party.
-
-This revolution began with a new marginal economy on the Internet. Bitcoin emerges as an alternative currency issued and not backed by a central authority, but by automated consensus among networked users \cite{swan2015blockchain}.
 
 For \cite{swan2015blockchain}, besides the currency ( "Blockchain 1.0"), smart contracts ("2.0") demonstrate how the blockchain is in a position to become the fifth disruptive computing paradigm after mainframes, PCs, Internet and mobile/ social networks. Bitcoin is starting to become a digital currency, but technology blockchain behind it can be much more significant.
 
@@ -39,16 +37,15 @@ Blockchain technology has key features such as centralization, persistence, anon
 Blockchain relies heavily on encryption to satisfy system and application security requirements. As the word suggests, cryptocurrencies also make heavy use of encryption. Encryption provides a mechanism for safely encoding the rules of a system encryption on the system itself. This can be used to prevent tampering and misconceptions. So, before be able to understand blockchains correctly, it is necessary to understand the cryptographic foundations \cite{narayanan2016bitcoin}. Cryptography is a deep academic field of research that uses many advanced mathematical techniques that are notoriously subtle and complicated \cite{narayanan2016bitcoin}.
 
 \subsubsubsection{Cryptographic Hashes}\label{sec:hashesCriptograficos}
-Hash is a mathematical function with the three properties to be follow \cite{narayanan2016bitcoin}:
+Hash is a mathematical function that converts any form of data into a unique string of text with the three properties to be follow \cite{narayanan2016bitcoin}:
 
 \begin{itemize}
 \item  Its input can be any string of any length;
 \item Produces a fixed size output (eg., 256 digits);
-\item It is efficiently computable. Intuitively, this means that for
-a given input string, is possible to find out what is the hash function output within a reasonable period of time. Technically, hashing a n-bit string must have a $O(n)$ runtime.
+\item It is efficiently computable. Technically, hashing a n-bit string must have a $O(n)$ runtime.
 \end{itemize}
 
-These properties define a general hash function. Cryptographic hash functions (or cryptographic summaries) are unidirectional and hardly allow retrieving the original value $x$ from the hash $h$. For a hash function to be cryptographically safe, it must satisfy the following three properties: (1) collision resistance, (2) hiding and (3) puzzle friendliness \cite{greve2018blockchain}.
+These properties define a general hash function. Cryptographic hash functions are unidirectional and hardly allow retrieving the original value $x$ from the hash $h$. For a hash function to be cryptographically safe, it must satisfy the following three properties: (1) collision resistance, (2) hiding and (3) puzzle friendliness \cite{greve2018blockchain}.
 
 A collision occurs when two distinct inputs produce the same output. A hash function $H$ is collision resistant when it is impossible to find two values $x$ and $y$ such that $x \neq y$ and $H(x) = H(y)$ \cite{narayanan2016bitcoin}.
 
@@ -59,9 +56,7 @@ A hash function $H$ is considered puzzle friendliness if for each possible outpu
 \subsubsubsection{Digital Signatures}\label{sec:assinaturasDigitais}
 A digital signature is supposed to be a digital analog of a handwritten paper signature. Two signature properties are desired which correspond well to the analogy of the handwritten signature: first, only one person can make their own signature, but anyone can verify if it is valid. Secondly, it is desired that the signature must be linked to a specific document, so the signature cannot be used to indicate the agreement or endorsement to a different document \cite{merkle1989certified}. Moreover, it is not possible to forge a signature in such a way as to reuse it in some other context. That is, signatures must be irrefutable.
 
-To implement digital signatures, asymmetric key encryption is used. A secret key (sk) is used for signing the document and a public key (pk) is used to attest the signature's authenticity \cite{greve2018blockchain}.
-
-A digital signature consists of the following algorithms \cite{narayanan2016bitcoin}:
+To implement digital signatures, asymmetric key encryption is used. A secret key (sk) is used for signing the document and a public key (pk) is used to attest the signature's authenticity. A digital signature consists of the following algorithms \cite{greve2018blockchain}:
 
 \begin{itemize}
 \item $(sk , pk) := generateKeys(keysize)$ – The $generateKeys()$ method receives a key size $(keysize)$ in the input and return a pair of public $(pk)$ and private $(sk)$ keys.
@@ -81,39 +76,27 @@ It is noted that \textit{generateKeys()} and \textit{sign()} can be random algor
 \subsubsection{Consensus}\label{sec:consenso}
 The key to blockchain operation is that the network must agree collectively on the ledger's content. Instead of a central entity maintain control over information (such as a bank for example), the data is shared among all. This requires the network to maintain the consensus around the information recorded in the block chain. How this consensus is reached, affects the security and economic parameters of the protocol \cite{kostarev2017review}.
 
-In this context, consensus emerges as a fundamental problem, since it allow distributed participants to coordinate their actions in order to reach common decisions, thereby ensuring the consistency of safety and system progress (liveness) \cite{greve2018blockchain}.
-
-Reaching consensus in such an environment is a challenge. This is also a challenge for blockchain, because its network is distributed and there is no central node that ensures that ledgers on distributed nodes be all the same. Nodes do not need to trust other nodes. Thus, some protocols are required to ensure that ledgers on different nodes are consistent \cite{kostarev2017review}.
-
-A good consensus algorithm means efficiency, security and convenience. Current common consensus algorithms still have many shortcomings. New consensus algorithms are created to solve some blockchain-specific problems \cite{zheng2016blockchain}.
+Reaching consensus is a challenge for blockchain, because its network is distributed and there is no central node that ensures that ledgers on distributed nodes be all the same. Nodes do not need to trust other nodes. Thus, protocols are required to ensure that ledgers on different nodes are consistent \cite{kostarev2017review}. A good consensus algorithm means efficiency, security and convenience. Current common consensus algorithms still have many shortcomings. New consensus algorithms are created to solve some blockchain-specific problems \cite{zheng2016blockchain}.
 
 \subsubsection{Distributed Ledger}\label{sec:livro}
 Distributed ledger is a data structure distributed by several nodes or computing devices. Each node replicates and saves a identical ledger copy. Each participating node in the network updates independently \cite{greve2018blockchain}.
 
-At the simplest level, a blockchain immutably records transactions which update states in a ledger. A smart contract programmatically accesses two distinct pieces of the ledger – a blockchain, which immutably records the history of all transactions, and a world state that holds a cache of the current value of these states, as it’s the current value of an object that is usually required. Smart contracts primarily put, get and delete states in the world state, and can also query the immutable blockchain record of transactions.
+At the simplest level, a blockchain immutably records transactions which update states in a ledger. A smart contract programmatically accesses two distinct pieces of the ledger – a blockchain, which immutably records the history of all transactions, and a world state that holds a cache of the current value of these states, as it’s the current value of an object that is usually required \cite{zheng2016blockchain}.
 
 \subsubsubsection{Transactions}\label{sec:transac}
-Blockchain is a public digital book that records online transactions. In it, transactions are recorded in a block without the help of third parties, such as a bank or payment processor. The blockchain algorithm automatically graphs and authenticates the transaction, which is immediately visible to all users, minimizing the possibility of fraud \cite{Bankrate2018}.
+Blockchain is a public digital book that records online transactions. The blockchain algorithm automatically graphs and authenticates the transaction, which is immediately visible to all users, minimizing the possibility of fraud \cite{Bankrate2018}.
 
-From a technical standpoint, the most fundamental definition of a transaction is an atomic event allowed by the underlying protocol. A transaction determines a sequence of state operations. It adds a transfer of asset or, generally speaking, a smart contract. In a basic case, the transaction girds a digital signature of the issuer holding the asset and the receiver's address, as well as inputs and outputs for transaction. Each transaction must contain both Inputs and Outputs just like in a accounting book. Entries indicate the previous transaction hash which is related to the current one \cite{greve2018blockchain}. Validating a Transition involves:
-
-\begin{enumerate}
-	\item signature verification;
-	\item confirmation of existing values from hashes of previous referenced transactions;
-	\item confirmation that the amount was not previously spent by any other transactions.
-\end{enumerate}
+From a technical standpoint, the most fundamental definition of a transaction is an atomic event allowed by the underlying protocol. A transaction determines a sequence of state operations. It adds a transfer of asset or, generally speaking, a smart contract. In a basic case, the transaction girds a digital signature of the issuer holding the asset and the receiver's address, as well as inputs and outputs for transaction. Entries indicate the previous transaction hash which is related to the current one \cite{greve2018blockchain}.
 
 \subsubsubsection{blocks}\label{sec:blocks}
 Blocks contains a header with information needed for current maintenance and its validation. A block consists of the block header and block body. The body's block consists of a transaction counter and transaction. The maximum number of transactions a block can hold depends on block size and the size of each transaction \cite{zheng2016blockchain}.
 
-Validate a block consists in verifying (i) if its structure is well formed (ii) its hash is valid (meets the challenge), (iii) its size is within the network accepted limit, (iv) the set of transactions within the block is valid, (v) the first transaction (and only the first) is the coinbase transaction - which incorporates the generation of new cryptocurrencies in the system, besides acting as a reward mechanism. The blocks are validated independently, by each node of the blockchain network, and this feature contributes to the process decentralization \cite{greve2018blockchain}.
+Validate a block consists in verifying (i) if its structure is well formed (ii) its hash is valid (meets the challenge), (iii) its size is within the network accepted limit, (iv) the set of transactions within the block is valid, (v) the first transaction (and only the first) is the coinbase transaction. The blocks are validated independently, by each node of the blockchain network, and this feature contributes to the process decentralization \cite{greve2018blockchain}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Smart Contracts}\label{sec:smartContracts}
-Blockchain 2.0 begins with the innovative proposal of smart contracts in 2013, and all range of possible financial applications \cite{greve2018blockchain}. A smart contract is a computerized transaction protocol that executes the terms of a contract \cite{szabo1997idea}. Its model was proposed a long time ago and now this concept can be implemented with blockchain.
+A smart contract is a computerized transaction protocol that executes the terms of a contract \cite{szabo1997idea}. The term smart contract (SC) means: “an internal transaction protocol format that executes the terms of a contract. Their overall goals are ensure common contractual conditions, minimize malicious and accidental exceptions and the need for reliable intermediaries. Related economic objectives include reducing fraud losses, arbitration and execution costs, and other transaction costs.” \cite{szabo1997idea}.
 
-The term smart contract (SC) means: “an internal transaction protocol format that executes the terms of a contract. Their overall goals are ensure common contractual conditions, minimize malicious and accidental exceptions and the need for reliable intermediaries. Related economic objectives include reducing fraud losses, arbitration and execution costs, and other transaction costs.” \cite{szabo1997idea}.
-
-In the blockchain, smart contracts are created as scripts, stored in with exclusive addressing on the blockchain itself \cite{greve2018blockchain}. They are triggered when addressing a transaction to it. Then the script is executed independently and automatically, as prescribed in all nodes in the network according to the data included in the transaction \cite{christidis2016blockchains}. Smart contracts interpret the code objectively - "The Code is the law".
+Smart contracts are created as scripts, stored in with exclusive addressing on the blockchain itself. They are triggered when addressing a transaction to it. Then the script is executed independently and automatically, as prescribed in all nodes in the network according to the data included in the transaction \cite{greve2018blockchain}. Smart contracts interpret the code objectively - "The Code is the law".
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
