@@ -88,7 +88,7 @@ Blockchain is a public digital book that records online transactions. The blockc
 
 From a technical standpoint, the most fundamental definition of a transaction is an atomic event allowed by the underlying protocol. A transaction determines a sequence of state operations. It adds a transfer of asset or, generally speaking, a smart contract. In a basic case, the transaction girds a digital signature of the issuer holding the asset and the receiver's address, as well as inputs and outputs for transaction. Entries indicate the previous transaction hash which is related to the current one \cite{greve2018blockchain}.
 
-\subsubsubsection{blocks}\label{sec:blocks}
+\subsubsubsection{Blocks}\label{sec:blocks}
 Blocks contains a header with information needed for current maintenance and its validation. A block consists of the block header and block body. The body's block consists of a transaction counter and transaction. The maximum number of transactions a block can hold depends on block size and the size of each transaction \cite{zheng2016blockchain}.
 
 Validate a block consists in verifying (i) if its structure is well formed (ii) its hash is valid (meets the challenge), (iii) its size is within the network accepted limit, (iv) the set of transactions within the block is valid, (v) the first transaction (and only the first) is the coinbase transaction. The blocks are validated independently, by each node of the blockchain network, and this feature contributes to the process decentralization \cite{greve2018blockchain}.
